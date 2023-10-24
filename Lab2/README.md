@@ -23,6 +23,12 @@ Thus...
 There were major issues with the web app finding the package.json file during the deployment stage, since it used to be in the subfolder ../Lab2/myExpressApp.
 Thus, I was unfortunatelly forced to move the files package.json, package-lock.json and the folder node_modules to the root of the repository instead.
 
+Edit: I did it. It was very simple, still so confusing - such a headache. 
+Azure Portal --> Open Web app Service --> Configuration --> Application Configuration --> Add a new Application Configuration --> Enter for the Name PROJECT and for the value <NEW ROOT PATH> (in my case Lab2/myExpressApp).
+sources: 
+https://stackoverflow.com/questions/18925075/how-can-i-set-the-root-folder-for-an-azure-websites-site
+https://github.com/projectkudu/kudu/wiki/Customizing-deployments
+
 ### Notable info
 Other issues consisted of port-settings, tast-cases, Git, deployment of the web app, creating a suitable azure-pipelines.yml file.
 In the end, Azure overall is quite of a headache to navigate especially with limited ressources and for beginners, still it has to be noted
