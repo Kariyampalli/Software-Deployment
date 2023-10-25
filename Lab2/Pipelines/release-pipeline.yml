@@ -1,0 +1,52 @@
+resources:
+  pipelines:
+  - pipeline: BTD-Pipe # Name of the pipeline resource.
+    source: Build-Test-Deploy-Pipeline # The name of the pipeline referenced by this pipeline resource.
+    project: Software Deployment - Pipelines # Required only if the source pipeline is in another project
+    trigger: true # Run app-ci pipeline when any run of security-lib-ci completes
+
+variables:
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: "40c13db7-4d9b-4f01-b014-7d9cce22f894"
+
+  # Web app name
+  webAppName: "SD-Release-Web-Application"
+
+  # Environment name
+  environmentName: "Release-Environment"
+
+  # Agent VM image name
+  vmImageName: "ubuntu-latest"
+
+jobs:
+  - deployment: Release
+    displayName: Release
+    environment: $(environmentName)
+    pool:
+      vmImage: $(vmImageName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: DownloadBuildArtifacts@1
+              displayName: "Download Build Artifacts"
+              inputs:
+                buildType: 'specific'
+                project: Software Deployment - Pipelines
+                pipeline: Build-Test-Deploy-Pipeline
+                buildVersionToDownload: 'latest'
+                downloadType: 'single'
+                artifactName: 'drop'
+                downloadPath: $(Pipeline.Workspace)/drop
+
+            - task: AzureWebApp@1
+              displayName: "Azure Web App Release: SD-Release-Web-Application"
+              inputs:
+                azureSubscription: $(azureSubscription)
+                appType: webAppLinux
+                appName: $(webAppName)
+                runtimeStack: "NODE|18.x"
+                package: $(Pipeline.Workspace)/drop/*.zip
+                startUpCommand: "npm start"
+
+            
