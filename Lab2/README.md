@@ -3,7 +3,7 @@
 ## Web app urls
 - Production Web App: https://sd-web-application.azurewebsites.net/
 - Development Web App: http://localhost:8080
-
+- Screenshots of the project: ./Lab2/Screenshots
 ## Goal and processes
 This project's goal has been to exercise and get familiar with building a **_Release-Pipeline_** in **_Azure_**. 
 
