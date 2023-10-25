@@ -2,11 +2,11 @@
 
 ## Web app urls
 
-- Production Web App: https://sd-web-application.azurewebsites.net/
-- Development Web App: http://localhost:8080
+- Production/Released Web App: https://sd-release-web-application.azurewebsites.net/
+- Development Web App: https://sd-web-application.azurewebsites.net/
 - Screenshots of the project: ./Lab2/Screenshots
   
-## Goal and processes
+## Goals and processes
 
 This project's goal has been to exercise and get familiar with building a **_Release-Pipeline_** in **_Azure_**. 
 
@@ -17,10 +17,13 @@ Thus...
  Then...
  1. Project has been created in *Azure DevOps*
  2. *Git repository* consiting of the web app has been cloned into the project
- 3. In *Anzure Portal*: A Web app was deployed (**_Application Insight_** enabled)
- 4. Back in *Azure DevOps* a pipeline has been created with the corresponding `azure-pipelines.yml` file (Repository needs to be connected to the pipeline)
- 5. Edited the stages within the `azure-pipelines.yml` to have the stages **_build, test and deployment_**
- 6. Following restriction has been set for running the deployment stage, to prevent deployment on every commit: Authorized users are allowed to run the deployment stage after review
+ 3. In *Azure Portal*: 2 x Web apps were deployed with **_Application Insight_** enabled (One web app for development and one for the release/production).
+ 4. Back in *Azure DevOps* 2 x pipelines have been created with each having its own pipeline.yml file (Release pipeline with `release-pipeline.yml` and development pipeline with `development-pipeline.yml`) - Repository needs to be connected to the pipelines.
+ 5. Edited the stages within the `development-pipeline.yml` to have the stages **_build, test and deployment_**
+ 6. Configured the release pipeline to only have a **_release job_**  in the `release-pipeline.yml`.
+ 7. Following restriction has been set before running the release pipeline, to prevent releasing on every commit:
+    - Authorized users are allowed to run the deployment stage after review (checking)
+    - Pipeline stage will start run-process (needs checking to run) when development pipeline is run
  
 ## Lessons learned
 
@@ -43,6 +46,6 @@ Sources:
 
 ### Notable info
 
-Other issues consisted of *port-settings, tast-cases, Git, deployment of the web app, creating a suitable azure-pipelines.yml* file.
+Other issues consisted of *port-settings, tast-cases, Git, deployment of the web app, creating a suitable pipelines.yml* file.
 In the end, *Azure* overall is quite of a headache to navigate especially with limited ressources and for beginners, still it has to be noted
 that *Azure* is a great tool for deploying services via the cloud and after this exercise, I now do know how ;). 
