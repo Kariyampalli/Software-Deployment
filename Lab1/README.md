@@ -1,4 +1,4 @@
-# Lab1
+# Lab 1: ARM-Templates
 
 This is only a small software deployment exercise with minimalistic settings (On a student subscription plan offered by _Azure_). Please make sure to create and set up your subscriptions, ARM-Template etc. the way its suited best for you.
 
