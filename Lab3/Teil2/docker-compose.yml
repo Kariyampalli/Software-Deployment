@@ -1,0 +1,23 @@
+version: "3"
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wordpress
+    ports:
+      - "8888:80"
+    volumes:
+      - wordpress_data:/var/www/html/wp-content
+
+  mysql:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.mysql
+    ports:
+      - "8889:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  wordpress_data:
+  mysql_data:

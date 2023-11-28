@@ -1,0 +1,125 @@
+# Lab 3: Setting up a Docker-Environemnt
+
+In this exercise a `Docker-Environment` will be set in two different ways, split into Teil 1 and Teil 2 (Teil/Part).
+
+## Why use Docker?
+
+**_" I don't know why it doesn't work on your computer, it works on mine_** 🤔 **_"_**
+
+_`Docker` is a powerful platform for developing, shipping, and running applications in containers. There are several compelling reasons why someone might choose to use `Docker`:_
+
+1. **Portability:**
+   `Docker-Containers` encapsulate an application and its dependencies, ensuring consistency across different environments.
+
+2. **Isolation:**
+   Containers provide lightweight and isolated environments, preventing interference and conflicts with other applications.
+
+3. **Efficiency:**
+   `Docker` uses a layered file system for efficient disk usage and quick image downloads. Containers start up and shut down rapidly.
+
+4. **Scalability:**
+   `Docker` enables easy scaling of applications by running multiple containers based on the same image. Orchestration tools like Kubernetes enhance scalability.
+
+5. **Resource Utilization:**
+   `Docker` allows efficient use of system resources by running containers on a shared operating system kernel.
+
+6. **DevOps Practices:**
+   `Docker` supports DevOps practices by providing a consistent environment for development, testing, and production.
+
+7. **Microservices Architecture:**
+   `Docker` supports a microservices architecture, allowing developers to break down monolithic applications into smaller, modular services.
+
+8. **Version Control:**
+   `Docker-Images` are versioned, providing a mechanism for tracking changes and rolling back to previous versions.
+
+9. **Community and Ecosystem:**
+   `Docker` has a large and active community, contributing to a vast ecosystem of pre-built images available on `Docker Hub`.
+
+10. **Cross-Platform Compatibility:**
+    `Docker` runs on various operating systems, including `Linux`, `Windows`, and `macOS`.
+
+# Teil 1
+
+In Part 1 (Teil 1), a `docker-compose` file with images installed from the `Docker Hub` was created.
+
+1. Create a `docker-dompose` file
+
+2. Install required Images from the `Docker Hub` (In our case `Wordpress` and `MySql`)
+   `docker pull [Image name]`
+
+3. Reference them in the image section of your `docker-compose` file
+
+4. Set options of the services/image-containers
+
+5. Then open the `Docker Desktop App` and run `docker-compose up -d`, to build the `Docker-Environment`, its image-containers and the images.
+
+6. Open and test your image-containers by runing certain command (See Teil 2) or openning on the specified ports.
+
+# Teil 2
+
+In Part 2 (Teil 2), two `Docker-Images` and its image-containers, one for `WordPress` and another for `MySql` with both using `Debian Bullseye` as a base were created. Furthermore, a `docker-compose` file was created as well, to connect both the `Wordpress-Image-Container` and the `MySQL-Image-Container`.
+
+## Compose-File
+
+### Docker-compose file
+
+`Docker Compose` simplifies the orchestration of multi-container applications, making it easier to manage and deploy complex setups. It is a powerful tool for both development and production environments, providing a unified configuration file to define the structure and behavior of your application's components.
+
+Following command creates/runs to referenced images, image-containers within the `docker-compose` file: `docker-compose up -d --build`
+
+### Images
+
+Another way to run/create your images and their corresponding containers can be done as follows:
+
+1. `docker build -t [image name]`
+2. `docker run -d -p 8080:80 [image name]`
+
+## MySQL-Image
+
+Due to the way the `Dockerfile` of the `MySQL-Image` is written, additional folder and files had to be created, to get the image running. Please keep in mind that the creation of the docker environment should be kept as simplistic as possible, since it will most likely be shared with other people, for this exercise purposes it should do fine.
+
+1. Create a `Dockerfile` for your `MySQL-Image`
+
+2. Chose a base for your image, such as `MySQL`, `Ubuntu`, `Debian`. In this example `Debain (Bullseye)` is used as the base (operating system) for this image and a `MySQL-Server` is installed onto the operating system
+
+3. Define Environment variables (In our case Database information) and write what should be run first (configurations) in order for your `MySQL-Server` to be able to get started
+
+### Test your MySQL-Image
+
+To test your MySQL-Image, use the following command: `docker exec -it [image container name] mysql -u wordpress -p`. In this case the name of the image-container is `teil2-mysql-1`
+
+## Wordpress-Image
+
+This `Wordpress-Image` has been created with `Debian (Bullseye)` as a base.
+
+1. Create a `Dockerfile` for your `Wordpress-Image`
+
+2. Chose a base for your image, such as `Wordpress`, `Ubuntu`, `Debian`. In this example `Debain (Bullseye)` is used as the base (operating system) for this image and `Wordpress`, `PHP` and `Apache` has been installed onto the operating system.
+
+3. Define Environment variables (In our case Database information) and write what should be run first (configurations) in order for your `Wordpress site` to be accessible
+
+### Test your Wordpress-Image
+
+To test your Wordpress-Image, use a command such as for the `MySQL-Image` or open the site on your browser with the defined port. In this case with port `8888`.
+
+# Tutorials and Docs
+
+### Installing Images
+
+- [Installing via Docker Hub](https://docs.docker.com/docker-hub/quickstart/)
+
+- [Images/Docker Hub](https://hub.docker.com/)
+
+### Creating a DockerFile
+
+- [Documentations](https://docs.docker.com/engine/reference/builder/)
+
+- [Best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+### Example installations of MySQL and Wordpress on Ubuntu
+
+- [Server setup Ubuntu](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
+
+- [Ubuntu, MySQL, PHP, Apache](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04)
+
+- [Ubuntu, Wodpress, PHP, Apache](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-ubuntu-16-04)

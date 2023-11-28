@@ -1,0 +1,33 @@
+# Use the official Debian image as the base image
+FROM debian:bullseye-slim
+
+
+ENV WORDPRESS_DB_HOST: mysql \
+    WORDPRESS_DB_USER: wordpress \
+    WORDPRESS_DB_PASSWORD: wordpress \
+    WORDPRESS_DB_NAME: wordpress
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    libapache2-mod-php \
+    php \
+    php-mysql \
+    wget \
+    unzip
+
+# Download and install WordPress
+RUN wget -q -O /tmp/wordpress.zip https://wordpress.org/latest.zip && \
+    unzip /tmp/wordpress.zip -d /var/www/html/ && \
+    rm /tmp/wordpress.zip && \
+    chown -R www-data:www-data /var/www/html/
+
+# Configure Apache
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
+
+# Expose port 80
+EXPOSE 80/tcp
+
+# Start Apache in the foreground
+CMD ["apache2ctl", "-D", "FOREGROUND"]
