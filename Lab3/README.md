@@ -59,6 +59,13 @@ In Part 1 (Teil 1), a `docker-compose` file with images installed from the `Dock
 
 6. Open and test your image-containers by runing certain command (See Teil 2) or openning on the specified ports.
 
+
+<img src=".\Screenshots\Teil1\Teil1_Wordpress.JPG" style="height: 500px; width:700px;"/>
+
+
+
+
+
 # Teil 2
 
 In Part 2 (Teil 2), two `Docker-Images` and its image-containers, one for `WordPress` and another for `MySql` with both using `Debian Bullseye` as a base were created. Furthermore, a `docker-compose` file was created as well, to connect both the `Wordpress-Image-Container` and the `MySQL-Image-Container`.
