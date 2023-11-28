@@ -2,6 +2,10 @@
 
 In this exercise a `Docker-Environment` will be set in two different ways, split into Teil 1 and Teil 2 (Teil/Part).
 
+<img src="https://logowik.com/content/uploads/images/301_docker.jpg" style="height: 100px; width: 130px"/> <img src="https://www.rogoit.de/webdesign-typo3-blog-duisburg/wp-content/uploads/2016/06/debian-logo-horizontal.gif" style="height: 100px; width:200px;"/> <img src="https://qloudea.com/blog/wp-content/uploads/2022/11/mysql-logo.jpg" style="height: 100px; width:200px;"/> 
+
+<img src="https://miro.medium.com/v2/resize:fit:474/1*hRd-FJvsygykeIhNFROxBw.jpeg" style="height: 100px; width:200px;"/> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" style="height: 100px; width:200px;"/> <img src="https://www.metoki.ch/wp-content/uploads/WordPress_logo_metoki-blau_1200x800.jpg" style="height: 100px; width:200px;"/>
+
 ## Why use Docker?
 
 **_" I don't know why it doesn't work on your computer, it works on mine_** 🤔 **_"_**
