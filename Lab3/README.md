@@ -2,7 +2,7 @@
 
 In this exercise a `Docker-Environment` will be set in two different ways, split into Teil 1 and Teil 2 (Teil/Part).
 
-<img src="https://logowik.com/content/uploads/images/301_docker.jpg" style="height: 100px; width: 130px"/> <img src="https://www.rogoit.de/webdesign-typo3-blog-duisburg/wp-content/uploads/2016/06/debian-logo-horizontal.gif" style="height: 100px; width:200px;"/> <img src="https://qloudea.com/blog/wp-content/uploads/2022/11/mysql-logo.jpg" style="height: 100px; width:200px;"/> 
+<img src="https://logowik.com/content/uploads/images/301_docker.jpg" style="height: 100px; width: 130px"/> <img src="https://www.rogoit.de/webdesign-typo3-blog-duisburg/wp-content/uploads/2016/06/debian-logo-horizontal.gif" style="height: 100px; width:200px;"/> <img src="https://qloudea.com/blog/wp-content/uploads/2022/11/mysql-logo.jpg" style="height: 100px; width:200px;"/>
 
 <img src="https://miro.medium.com/v2/resize:fit:474/1*hRd-FJvsygykeIhNFROxBw.jpeg" style="height: 100px; width:200px;"/> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" style="height: 100px; width:200px;"/> <img src="https://www.metoki.ch/wp-content/uploads/WordPress_logo_metoki-blau_1200x800.jpg" style="height: 100px; width:200px;"/>
 
@@ -59,20 +59,15 @@ In Part 1 (Teil 1), a `docker-compose` file with images installed from the `Dock
 
 6. Open and test your image-containers by runing certain command (See Teil 2) or openning on the specified ports.
 
-
 <img src=".\Screenshots\Teil1\Teil1_Wordpress.JPG" style="height: 500px; width:700px;"/>
 
-
-
-
+<img src=".\Screenshots\Teil1\Deployed.JPG" style="height: 500px; width:700px;"/>
 
 # Teil 2
 
 In Part 2 (Teil 2), two `Docker-Images` and its image-containers, one for `WordPress` and another for `MySql` with both using `Debian Bullseye` as a base were created. Furthermore, a `docker-compose` file was created as well, to connect both the `Wordpress-Image-Container` and the `MySQL-Image-Container`.
 
-## Compose-File
-
-### Docker-compose file
+## Docker-compose file
 
 `Docker Compose` simplifies the orchestration of multi-container applications, making it easier to manage and deploy complex setups. It is a powerful tool for both development and production environments, providing a unified configuration file to define the structure and behavior of your application's components.
 
@@ -84,6 +79,8 @@ Another way to run/create your images and their corresponding containers can be 
 
 1. `docker build -t [image name]`
 2. `docker run -d -p 8080:80 [image name]`
+
+<img src=".\Screenshots\Teil2\Deployed.JPG" style="height: 500px; width:700px;"/>
 
 ## MySQL-Image
 
@@ -99,6 +96,10 @@ Due to the way the `Dockerfile` of the `MySQL-Image` is written, additional fold
 
 To test your MySQL-Image, use the following command: `docker exec -it [image container name] mysql -u wordpress -p`. In this case the name of the image-container is `teil2-mysql-1`
 
+It asks you to put in the password defined in the environment section within the DockerFile. After entering the password, the database should be accessable and displayed as a command line. After that SQL-Commands can be entered to create tables, show databases etc.
+
+<img src=".\Screenshots\Teil2\Show_Database.JPG" style="height: 200px; width:200px;"/>
+
 ## Wordpress-Image
 
 This `Wordpress-Image` has been created with `Debian (Bullseye)` as a base.
@@ -112,6 +113,8 @@ This `Wordpress-Image` has been created with `Debian (Bullseye)` as a base.
 ### Test your Wordpress-Image
 
 To test your Wordpress-Image, use a command such as for the `MySQL-Image` or open the site on your browser with the defined port. In this case with port `8888`.
+
+<img src=".\Screenshots\Teil2\apache.JPG" style="height: 500px; width:700px;"/>
 
 # Tutorials and Docs
 
