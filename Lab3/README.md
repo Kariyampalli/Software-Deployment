@@ -1,6 +1,6 @@
 # Lab 3: Setting up a Docker-Environemnt
 
-In this exercise a `Docker-Environment` will be set in two different ways, split into Teil 1 and Teil 2 (Teil/Part).
+In this exercise a `Docker-Environment` will be set in two different ways, split into Teil 1 and Teil 2 (Teil/Part). Teil 1 uses images pulished on the Docker Hub, Teil 2 in the other hand will use self defined and created images instead.
 
 <img src="https://logowik.com/content/uploads/images/301_docker.jpg" style="height: 100px; width: 130px"/> <img src="https://www.rogoit.de/webdesign-typo3-blog-duisburg/wp-content/uploads/2016/06/debian-logo-horizontal.gif" style="height: 100px; width:200px;"/> <img src="https://qloudea.com/blog/wp-content/uploads/2022/11/mysql-logo.jpg" style="height: 100px; width:200px;"/>
 
@@ -55,7 +55,7 @@ In Part 1 (Teil 1), a `docker-compose` file with images installed from the `Dock
 
 4. Set options of the services/image-containers
 
-5. Then open the `Docker Desktop App` and run `docker-compose up -d`, to build the `Docker-Environment`, its image-containers and the images.
+5. Then open the `Docker Desktop App` and run `docker-compose up -d`, to build and deploy the `Docker-Environment`, its image-containers and the images.
 
 6. Open and test your image-containers by runing certain command (See Teil 2) or openning on the specified ports.
 
@@ -71,11 +71,11 @@ In Part 2 (Teil 2), two `Docker-Images` and its image-containers, one for `WordP
 
 `Docker Compose` simplifies the orchestration of multi-container applications, making it easier to manage and deploy complex setups. It is a powerful tool for both development and production environments, providing a unified configuration file to define the structure and behavior of your application's components.
 
-Following command creates/runs to referenced images, image-containers within the `docker-compose` file: `docker-compose up -d --build`
+Following command builds and deploys the referenced images, image-containers within the `docker-compose` file: `docker-compose up -d --build`
 
 ### Images
 
-Another way to run/create your images and their corresponding containers can be done as follows:
+Another way to build your images and their corresponding containers can be done as follows:
 
 1. `docker build -t [image name]`
 2. `docker run -d -p 8080:80 [image name]`
