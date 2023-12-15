@@ -244,15 +244,30 @@ spec:
   storageClassName: manual
 ```
 
+
 ## Run and deploy Wordpress
 
 1. **Create and Deploy Wordpress**
    
    This command runs all the files within the directory the terminal is currently in: `kubectl apply -f ./`  (run single file: `kubectl apply -f your-file.yaml`)
 
-2. **Access Wordpress**
+   <br><br>
+   > Applied Services, Volumes and Deployment
+   
+   <img src=".\Screenshots\Created.png" style="height: 150px; width:300px;"/>
+
+   <br><br>
+   > Created Volumes: Make sure they are set to `Bound` and not to `Available`
+   
+   <img src=".\Screenshots\Volumes.png" style="height: 260px; width:650px;"/>
+    
+1. **Access Wordpress**
   
    This command shows you the external IP, which allows Wordpress to be reached from the outside kubectl: `kubectl get svc wordpress-service`
+
+   <br><br>
+   > Wordpress service info + External IP
+    <img src=".\Screenshots\WordpressData.png" style="height: 50px; width:500px;"/>
 
    <br><br>
    > Wordpress opened in Browser
