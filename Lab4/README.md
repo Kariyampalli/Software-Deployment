@@ -3,9 +3,9 @@
 - Install _Azure CLI_ & _kubectl_ (should already be installed with _Azure CLI_) 
 - Log into your _Azure_ account 
 
-## Create Azure Kubernetes Service (AKS) and corresponding RessourceGroup
+## Create Azure Kubernetes Service (AKS) and corresponding ResourceGroup
 
-1. **Create a Ressource Group**
+1. **Create a Resource Group**
    
    `az group create --name AKSGroup --location eastus`
 
@@ -29,7 +29,15 @@
 
 
    > Dispaly the created nodes: `kubectl get nodes`
-   <img src=".\Screenshots\Teil1\Deployed.JPG" style="height: 500px; width:700px;"/>
+   <img src=".\Screenshots\Nodes.png" style="height: 50px; width:400px;"/>
+
+   <br><br>
+   > Created Resource Group (Azure View)
+   <img src=".\Screenshots\Ressourcegroup.png" style="height: 300px; width:600px;"/>
+   
+   <br><br>
+    > Azure Kubernetes Service (AKS) Cluster (Azure View)
+   <img src=".\Screenshots\Cluster.png" style="height: 300px; width:600px;"/>
 
 ## Create Wordpress service, MySQL service and their Volumes (pvc/pv)
 
@@ -240,18 +248,24 @@ spec:
 
 1. **Create and Deploy Wordpress**
    
-This command runs all the files within the directory the terminal is currently in: `kubectl apply -f ./`  (run single file: `kubectl apply -f your-file.yaml`)
+   This command runs all the files within the directory the terminal is currently in: `kubectl apply -f ./`  (run single file: `kubectl apply -f your-file.yaml`)
 
 2. **Access Wordpress**
   
-This command shows you the external IP, which allows Wordpress to be reached from the outside kubectl: `kubectl get svc wordpress-service`
+   This command shows you the external IP, which allows Wordpress to be reached from the outside kubectl: `kubectl get svc wordpress-service`
 
-**Other useful commands**
-If you want to delete a create ressource (Service, Volume, etc.), use e.g.: 
-`kubectl apply -f your-file.yaml` or for all use `kubectl delete -f ./`
+   <br><br>
+   > Wordpress opened in Browser
+    <img src=".\Screenshots\Wordpress.png" style="height: 300px; width:600px;"/>
 
-To get your Pods
-`kubectl get pods`
+   **Other useful commands**
+   
+   If you want to delete a create ressource (Service, Volume, etc.), use e.g.: 
+   `kubectl apply -f your-file.yaml` or for all use `kubectl delete -f ./`
+
+   <br><br>
+   > Display your Pods: `kubectl get pods`
+    <img src=".\Screenshots\Pods.png" style="height: 50px; width:300px;"/>
 
 ## Tutorials
 
