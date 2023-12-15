@@ -29,6 +29,7 @@
 
 
    > Dispaly the created nodes: `kubectl get nodes`
+   <img src=".\Screenshots\Teil1\Deployed.JPG" style="height: 500px; width:700px;"/>
 
 ## Create Wordpress service, MySQL service and their Volumes (pvc/pv)
 
