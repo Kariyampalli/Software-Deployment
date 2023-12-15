@@ -5,8 +5,6 @@
 
 ## Create Azure Kubernetes Service (AKS) and corresponding RessourceGroup
 
-Preconditions: .
-
 1. **Create a Ressource Group**
    
    `az group create --name AKSGroup --location eastus`
@@ -243,14 +241,18 @@ spec:
    
 This command runs all the files within the directory the terminal is currently in: `kubectl apply -f ./`  (run single file: `kubectl apply -f your-file.yaml`)
 
-2. kubectl get svc wordpress-service
-2. kubectl get pods
+2. **Access Wordpress**
+  
+This command shows you the external IP, which allows Wordpress to be reached from the outside kubectl: `kubectl get svc wordpress-service`
 
-kubectl delete -f ./
+**Other useful commands**
+If you want to delete a create ressource (Service, Volume, etc.), use e.g.: 
+`kubectl apply -f your-file.yaml` or for all use `kubectl delete -f ./`
 
-kubectl get svc wordpress-service
+To get your Pods
+`kubectl get pods`
 
-Tutorials
+## Tutorials
 
 Creating and Connecting the Azure Kubernetes Service Cluster
 https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli
