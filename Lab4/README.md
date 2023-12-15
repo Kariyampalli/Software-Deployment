@@ -97,16 +97,36 @@ spec:
 ```
 
 <br><br>
-> MySql secret: Create `mysql-secret.yaml` file
+> MySql secret: Create `mysql-secret.yaml` file (Encrypt your `mysql-root-password` with `base64` first)
+
+```powershell
+# POWERSHELL EXAMPLE TO ENCRYPT YOUR mysql-root-password WITH BASE64
+# DONT BE CONFUSED WHY THERE IS A DIFFERENT root-password-value,
+# I used a different password than "your_password" this is only an example
+# to encrypt your password. Furthermore, decryption should work similary.
+
+
+# Original password
+$originalPassword = "your_password"
+
+# Convert the password to bytes and then encode it in Base64
+$encodedPassword = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($originalPassword))
+
+Write-Host "Encoded Password: $encodedPassword"
+
+# Gets you: eW91cl9wYXNzd29yZA==
+```
+
 ```yaml
 ---
+# The `mysql-secret.yaml` file
 apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-secret
 type: Opaque
 data:
-  mysql-root-password: eW91cl9kYXRh
+  mysql-root-password: eW91cl9kYXRh # Replace this with your encrypted password
 ```
 
 <br><br>
@@ -263,7 +283,7 @@ spec:
     
 1. **Access Wordpress**
   
-   This command shows you the external IP, which allows Wordpress to be reached from the outside kubectl: `kubectl get svc wordpress-service`
+   This command shows you the external IP, which allows you to acess Wordpress from the outside: `kubectl get svc wordpress-service`
 
    <br><br>
    > Wordpress service info + External IP
