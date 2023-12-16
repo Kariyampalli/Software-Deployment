@@ -176,7 +176,6 @@ spec:
 > Wordpress service, container and deployment: Create `wordpress-deployment.yaml` file
 ```yaml
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -207,7 +206,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
-                  key: MYSQL_ROOT_PASSWORD
+                  key: mysql-root-password
             - name: WORDPRESS_DB_USER
               value: root
             - name: WORDPRESS_DB_NAME
@@ -216,6 +215,7 @@ spec:
         - name: wordpress-data
           persistentVolumeClaim:
             claimName: wordpress-pvc
+
 ---
 kind: Service
 apiVersion: v1
